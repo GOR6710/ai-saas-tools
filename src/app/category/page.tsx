@@ -1,4 +1,4 @@
-import { getAllCategories } from '@/lib/data'
+import { getAllCategories } from '../../lib/data'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 
 export default function CategoryList() {
   const categories = getAllCategories()
-
   return (
     <main className="py-16">
       <div className="container-main">
