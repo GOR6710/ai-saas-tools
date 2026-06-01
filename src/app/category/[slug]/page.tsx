@@ -1,48 +1,31 @@
-import { getCategoryBySlug, getToolsByCategory } from '@/lib/data'
+import { getCategoryBySlug, getToolsByCategory } from '../../../lib/data'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
-interface Props {
-  params: { slug: string }
-}
+interface Props { params: { slug: string } }
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'ai-writing' },
-    { slug: 'ai-coding' },
-    { slug: 'ai-image' },
-    { slug: 'ai-chat' },
-    { slug: 'project-management' },
-    { slug: 'ai-meeting' },
-    { slug: 'ai-seo' },
-    { slug: 'automation' },
-  ]
+  return [{ slug: 'ai-writing' }, { slug: 'ai-coding' }, { slug: 'ai-image' }, { slug: 'ai-chat' },
+    { slug: 'project-management' }, { slug: 'ai-meeting' }, { slug: 'ai-seo' }, { slug: 'automation' }]
 }
 
 export function generateMetadata({ params }: Props): Metadata {
   const category = getCategoryBySlug(params.slug)
-  return {
-    title: category ? `${category.name} - 最佳${category.name}工具推荐` : '分类',
-    description: category ? `探索最佳${category.name}工具，含详细对比、定价信息和用户评分。` : '',
-  }
+  return { title: category ? `${category.name} - 最佳${category.name}工具推荐` : '分类',
+    description: category ? `探索最佳${category.name}工具，含详细对比、定价信息和用户评分。` : '' }
 }
 
 export default function CategoryDetail({ params }: Props) {
   const category = getCategoryBySlug(params.slug)
   const tools = getToolsByCategory(params.slug)
-
-  if (!category) {
-    return <div className="container-main py-20"><h1>分类不存在</h1></div>
-  }
+  if (!category) return <div className="container-main py-20"><h1>分类不存在</h1></div>
 
   return (
     <main className="py-16">
       <div className="container-main">
         <nav className="text-sm text-slate-500 mb-4">
-          <a href="/" className="hover:text-slate-900">首页</a>
-          <span className="mx-2">&gt;</span>
-          <a href="/category" className="hover:text-slate-900">分类</a>
-          <span className="mx-2">&gt;</span>
+          <a href="/" className="hover:text-slate-900">首页</a><span className="mx-2">&gt;</span>
+          <a href="/category" className="hover:text-slate-900">分类</a><span className="mx-2">&gt;</span>
           <span className="text-slate-900">{category.name}</span>
         </nav>
         <h1 className="section-title">最佳{category.name}工具</h1>
@@ -58,9 +41,7 @@ export default function CategoryDetail({ params }: Props) {
               </div>
               <p className="text-slate-600 mb-4">{tool.tagline}</p>
               <div className="flex items-center gap-4 text-sm text-slate-500">
-                <span className="text-yellow-600">★ {tool.rating}</span>
-                <span>{tool.reviewCount} 评价</span>
-                <span>{tool.pricing}</span>
+                <span className="text-yellow-600">★ {tool.rating}</span><span>{tool.reviewCount} 评价</span><span>{tool.pricing}</span>
               </div>
             </Link>
           ))}
