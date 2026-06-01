@@ -1,14 +1,10 @@
-import { getAllTools, getAllCategories } from '@/lib/data'
+import { getAllTools, getAllCategories } from '../lib/data'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'AI工具对比 - 发现最佳AI SaaS工具',
   description: 'AI SaaS工具对比与推荐平台。提供详细对比、真实评测和场景化推荐，帮你找到最适合的AI工具。',
-  openGraph: {
-    title: 'AI工具对比 - 发现最佳AI SaaS工具',
-    description: '发现最适合你的AI工具和生产力软件',
-  },
 }
 
 export default function Home() {
@@ -17,28 +13,20 @@ export default function Home() {
 
   return (
     <main>
-      {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-50 to-slate-100 py-20">
         <div className="container-main text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            发现最佳 <span className="text-primary-600">AI工具</span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10">
-            AI SaaS工具对比与推荐平台。提供详细对比、真实评测和场景化推荐，帮你找到最适合的工具。
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">发现最佳 <span className="text-primary-600">AI工具</span></h1>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10">AI SaaS工具对比与推荐平台。提供详细对比、真实评测和场景化推荐，帮你找到最适合的工具。</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/category" className="btn-primary">浏览分类</a>
             <a href="/compare" className="btn-primary bg-secondary-800 hover:bg-secondary-900">开始对比</a>
           </div>
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-slate-500">
-            <span>{tools.length}+ 工具</span>
-            <span>{categories.length} 分类</span>
-            <span>实时对比</span>
+            <span>{tools.length}+ 工具</span><span>{categories.length} 分类</span><span>实时对比</span>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
       <section className="py-16">
         <div className="container-main">
           <h2 className="section-title text-center">工具分类</h2>
@@ -54,7 +42,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Tools */}
       <section className="py-16 bg-slate-50">
         <div className="container-main">
           <h2 className="section-title text-center">精选工具</h2>
@@ -79,7 +66,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20">
         <div className="container-main text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">找不到合适的工具？</h2>
